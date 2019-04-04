@@ -11,6 +11,14 @@
 
 
 from sklearn.datasets import fetch_20newsgroups
+from nltk.corpus import reuters
+from nltk.corpus import stopwords
+from sklearn.preprocessing import MultiLabelBinarizer
+labels = reuters.categories()
+
+n_classes = 90
+
+
 from pprint import pprint
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import metrics
@@ -43,18 +51,85 @@ def preprocess(text):
             
     return result
 
+
+def load_reuters_data():
+    """
+    Load the Reuters dataset.
+
+    Returns
+    -------
+    Tuple of Numpy arrays: `(x_train, y_train), (x_test, y_test)`.
+    """
+    nltk.download('stopwords')
+    nltk.download('reuters')
+    stop_words = stopwords.words("english")
+    vectorizer = TfidfVectorizer(stop_words=stop_words)
+    mlb = MultiLabelBinarizer()
+    
+    documents = reuters.fileids()
+    test = [d for d in documents if d.startswith('test/')]
+    train = [d for d in documents if d.startswith('training/')]
+
+    docs = {}
+    docs['train'] = [reuters.raw(doc_id) for doc_id in train]
+    docs['test'] = [reuters.raw(doc_id) for doc_id in test]
+    
+    return docs
+
+
 def main():
 	
-	# Fetching train and testing data using sklearn's API
+	# Fetching newsgroups20 train and testing data using sklearn's API
 
 	newsgroups_train = fetch_20newsgroups(subset='train')
 	newsgroups_test = fetch_20newsgroups(subset='test')
+	
+	
+	# Fetching newsgroups20 train and testing data using nltk's API
+	data=load_reuters_data()
+	reuters_train= data['train']
+	reuters_test= data['test']
+
+	# print(reuters_train[0])
+	# print('*********************************')
 	nltk.download('wordnet')
-				
+	
+
+	#Accumulating data from both the datasets
+	total_train=[]
+	total_test=[]
+
+	for doc in newsgroups_train.data:
+		total_train.append(doc)
+
+	for doc in reuters_train:
+		total_train.append(doc)
+		
+	for doc in newsgroups_test.data:
+		total_test.append(doc)
+
+	for doc in reuters_test:
+		total_test.append(doc)
+
+		
+	# total_train.append(newsgroups_train.data)		
+	# total_train.append(reuters_train)		
+	# total_test.append(newsgroups_test.data)		
+	# total_test.append(reuters_test)		
+	# print(newsgroups_train.data[1])
+	print('Data has been totaled!!')
+	# print(newsgroups_test)
+
 	#Preprocessing the training data
 	processed_docs = []
 	
-	for doc in newsgroups_train.data:
+	# for doc in newsgroups_train.data:
+	# 	processed_docs.append(preprocess(doc))
+
+	# print(total_train)
+	print('#######################################################')
+	for doc in total_train:
+		# print(doc)
 		processed_docs.append(preprocess(doc))
 
 	'''
@@ -116,7 +191,7 @@ def main():
 	# print(unseen_documents)    
 
 	# Data preprocessing step for the unseen document
-	for doc in newsgroups_test.data:
+	for doc in total_test:
 		bow_vector = dictionary.doc2bow(preprocess(doc))
 		print("*********************************************************************")
 		print(doc)
