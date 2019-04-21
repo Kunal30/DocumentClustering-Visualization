@@ -52,23 +52,23 @@ def main():
 		class_count_Z[int(topics[i])]=class_count_Z[int(topics[i])]+1
 	# print(topics)
 	# print(topics.shape)	
-	print(class_count_Z)
-	# color=['blue','green','red','cyan',
-	# 'magenta','yellow','black','#293f63',
-	# '#2a8c25','#c6c431','#aa317e','#68271c',
-	# '#f27900','#0be09c','#ba9e9e','#a31f01',
-	# '#42b765','#1c98a8','#32e0ff','#a5568f']
-	# latent=TSNE(n_components=2).fit_transform(feature_vectors)
-	# print(latent.shape)
+	# print(class_count_Z)
+	color=['blue','green','red','cyan',
+	'magenta','yellow','black','#293f63',
+	'#2a8c25','#c6c431','#aa317e','#68271c',
+	'#f27900','#0be09c','#ba9e9e','#a31f01',
+	'#42b765','#1c98a8','#32e0ff','#a5568f']
+	latent=TSNE(n_components=2).fit_transform(feature_vectors)
+	print(latent.shape)
 	
-	# for i in range(20):
-	# 	ix=np.where(topics==i)
-	# 	plt.scatter(latent[ix,0],latent[ix,1],c=color[i])
+	for i in range(20):
+		ix=np.where(topics==i)
+		plt.scatter(latent[ix,0],latent[ix,1],c=color[i])
 	
-	# plt.title("LDA on 20 Newsgroups dataset")
-	# plt.xlabel("Latent Semantics x[0]")
-	# plt.ylabel("Latent Semantics x[1]")
-	# plt.show()
+	plt.title("LDA on 20 Newsgroups dataset")
+	plt.xlabel("Latent Semantics x[0]")
+	plt.ylabel("Latent Semantics x[1]")
+	plt.show()
 	
 
 
