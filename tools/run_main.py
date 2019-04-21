@@ -34,6 +34,7 @@ import pandas as pd
 from sklearn.manifold import TSNE
 import time
 from tsne import tsne
+from preprocess_reuters_dataset import get_medium_dataset
 
 '''
 Write a function to perform the pre processing steps on the entire dataset
@@ -90,8 +91,15 @@ def main():
 	reuters_train= data['train']
 	reuters_test= data['test']
 
+
+	medium_total=get_medium_dataset()
+
+	med_len=(medium_total.size)/2
+	medium_train=medium_total[0:med_len]
+	medium_test=medium_total[med_len:-1]
+
 	# print(reuters_train[0])
-	# print('*********************************')
+	print('*********************************')
 	nltk.download('wordnet')
 	
 
@@ -99,16 +107,25 @@ def main():
 	total_train=[]
 	total_test=[]
 
+	# Developing the train set
 	for doc in newsgroups_train.data:
 		total_train.append(doc)
 
 	for doc in reuters_train:
 		total_train.append(doc)
-		
+	
+	for doc in medium_train:
+		total_train.append(doc)
+
+
+	# Developing the test set	
 	for doc in newsgroups_test.data:
 		total_test.append(doc)
 
 	for doc in reuters_test:
+		total_test.append(doc)
+
+	for doc in medium_test:
 		total_test.append(doc)
 
 		
@@ -191,7 +208,7 @@ def main():
 	# print(unseen_documents)    
 
 	# Data preprocessing step for the unseen document
-	for doc in total_test:
+	for doc in total_train:
 		bow_vector = dictionary.doc2bow(preprocess(doc))
 		print("*********************************************************************")
 		print(doc)
@@ -200,10 +217,9 @@ def main():
 		    print("Score: {}\t Topic: {}".format(score, lda_model.print_topic(index, 5)))
 
 	
-	print(lda_model)
-	# Now passing the Topic-Document Matrix to the TSNE MODULE:
-	tsne(lda_model)
-
+	#Saving the trained LDA model
+	lda_model.save('lda.model')
+	
 
 
 if __name__ == "__main__":
