@@ -1,19 +1,53 @@
 import plotly as py
 import plotly.graph_objs as go
-
+import pickle
 import numpy as np
 
-x, y, z = np.random.multivariate_normal(np.array([0,0,0]), np.eye(3), 400).transpose()
+# x, y, z = np.random.multivariate_normal(np.array([0,0,0]), np.eye(3), 400).transpose()
+color=['blue','green','red','cyan',
+'magenta','yellow','black','#293f63',
+'#2a8c25','#c6c431','#aa317e','#68271c',
+'#f27900','#0be09c','#ba9e9e','#a31f01',
+'#42b765','#1c98a8','#32e0ff','#a5568f']
 
+
+file = open('latent.txt', 'r')
+latent = pickle.load(file)
+
+f = open('Z.txt', 'r')
+Z = pickle.load(f)
+
+f = open('topics.txt', 'r')
+topics = pickle.load(f)
+
+tsne_x=latent[:,0]
+tsne_y=latent[:,1]
+
+topics=np.reshape(topics,(topics.shape[0],))
+
+tsne_z=np.zeros((topics.shape[0],))
+color_docx=[]
+
+for i in range(topics.shape[0]):
+    tsne_z[i]=Z[int(topics[i])]
+    color_docx.append(color[int(topics[i])] )
+
+
+# Just need to replace x, y, z with tsne_x, tsne_y, tsne_z
+
+
+# # print('x=',x.shape)
+# # print('y=',y.shape)
+# print('z=',z.shape)
 trace1 = go.Scatter3d(
-    x=x,
-    y=y,
-    z=z,
+    x=tsne_x,
+    y=tsne_y,
+    z=tsne_z,
     mode='markers',
     marker=dict(
         size=12,
-        color=z,                # set color to an array/list of desired values
-        colorscale='Viridis',   # choose a colorscale
+        color=color_docx,                # set color to an array/list of desired values
+        # colorscale='Viridis',   # choose a colorscale
         opacity=0.8
     )
 )

@@ -58,9 +58,22 @@ def main():
 	'#2a8c25','#c6c431','#aa317e','#68271c',
 	'#f27900','#0be09c','#ba9e9e','#a31f01',
 	'#42b765','#1c98a8','#32e0ff','#a5568f']
+
 	latent=TSNE(n_components=2).fit_transform(feature_vectors)
 	print(latent.shape)
 	
+	f = open("latent.txt", "w")
+	pickle.dump(latent,f)
+	f.close()
+
+	f = open("Z.txt", "w")
+	pickle.dump(class_count_Z,f)
+	f.close()
+
+	f = open("topics.txt", "w")
+	pickle.dump(topics,f)
+	f.close()
+
 	for i in range(20):
 		ix=np.where(topics==i)
 		plt.scatter(latent[ix,0],latent[ix,1],c=color[i])
