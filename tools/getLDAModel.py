@@ -33,7 +33,7 @@ import nltk
 import pandas as pd
 from sklearn.manifold import TSNE
 import time
-from tsne import tsne
+# from tsne import tsne
 from preprocess_reuters_dataset import get_medium_dataset
 import pickle
 '''
@@ -134,21 +134,13 @@ def main():
 	f.close()
 	
 	print('data has been written')
-	# total_train.append(newsgroups_train.data)		
-	# total_train.append(reuters_train)		
-	# total_test.append(newsgroups_test.data)		
-	# total_test.append(reuters_test)		
-	# print(newsgroups_train.data[1])
+	
 	print('Data has been totaled!!')
-	# print(newsgroups_test)
-
+	
 	#Preprocessing the training data
 	processed_docs = []
 	
-	# for doc in newsgroups_train.data:
-	# 	processed_docs.append(preprocess(doc))
-
-	# print(total_train)
+	
 	print('#######################################################')
 	for doc in total_train:
 		# print(doc)
@@ -160,32 +152,13 @@ def main():
 	'''
 	dictionary = gensim.corpora.Dictionary(processed_docs)
 
-	# '''
-	# Checking dictionary created
-	# '''
-	# count = 0
-	# for k, v in dictionary.iteritems():
-	#     print(k, v)
-	#     count += 1
-	#     if count > 10:
-	#         break
-
+	
 	'''
 	Create the Bag-of-words model for each document i.e for each document we create a dictionary reporting how many
 	words and how many times those words appear. Save this to 'bow_corpus'
 	'''
 	bow_corpus = [dictionary.doc2bow(doc) for doc in processed_docs]
 	
-	'''
-	Preview BOW for our sample preprocessed document
-	'''
-	# document_num = 20
-	# bow_doc_x = bow_corpus[document_num]
-
-	# for i in range(len(bow_doc_x)):
-	#     print("Word {} (\"{}\") appears {} time.".format(bow_doc_x[i][0], 
-	#                                                      dictionary[bow_doc_x[i][0]], 
-	#                                                      bow_doc_x[i][1]))        
 	
 	'''
 	Train your lda model using gensim.models.LdaMulticore and save it to 'lda_model'
@@ -198,33 +171,28 @@ def main():
 	                                   workers = 2)
 
 
-	'''
-	For each topic, we will explore the words occuring in that topic and its relative weight
-	'''
-	for idx, topic in lda_model.print_topics(-1):
-	    print("Topic: {} \nWords: {}".format(idx, topic ))
-	    print("\n")
+	# '''
+	# For each topic, we will explore the words occuring in that topic and its relative weight
+	# '''
+	# for idx, topic in lda_model.print_topics(-1):
+	#     print("Topic: {} \nWords: {}".format(idx, topic ))
+	#     print("\n")
 
-	# num = 100
-	# unseen_documents=[]
-	# for i in range(0,len(newsgroups_test.data)):
-	# 	unseen_documents.append(newsgroups_test.data[i])
-	
-	# print(unseen_documents)    
+	    
 
-	# Data preprocessing step for the unseen document
-	for doc in total_train:
-		bow_vector = dictionary.doc2bow(preprocess(doc))
-		print("*********************************************************************")
-		print(doc)
-		print("*********************************************************************")
-		for index, score in sorted(lda_model[bow_vector], key=lambda tup: -1*tup[1]):
-		    print("Score: {}\t Topic: {}".format(score, lda_model.print_topic(index, 5)))
+	# # Data preprocessing step for the unseen document
+	# for doc in total_train:
+	# 	bow_vector = dictionary.doc2bow(preprocess(doc))
+	# 	print("*********************************************************************")
+	# 	print(doc)
+	# 	print("*********************************************************************")
+	# 	for index, score in sorted(lda_model[bow_vector], key=lambda tup: -1*tup[1]):
+	# 	    print("Score: {}\t Topic: {}".format(score, lda_model.print_topic(index, 5)))
 
 	
 	#Saving the trained LDA model
 	lda_model.save('lda.model')
-	
+	print('Model Saved')
 
 
 if __name__ == "__main__":

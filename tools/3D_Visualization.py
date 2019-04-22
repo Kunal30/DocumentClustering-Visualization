@@ -63,3 +63,4 @@ layout = go.Layout(
 )
 fig = go.Figure(data=data, layout=layout)
 py.offline.plot(fig, filename='3d-scatter-colorscale')
+print('Open your Browser')

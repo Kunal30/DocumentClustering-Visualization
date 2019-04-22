@@ -42,7 +42,7 @@ def main():
 	feature_vectors=np.load("input2tsne.npy")
 	topics=np.zeros((feature_vectors.shape[0],1))
 
-	print(feature_vectors.shape)
+	# print(feature_vectors.shape)
 	class_count_Z=np.zeros((20,1))
 	for i in range(feature_vectors.shape[0]):
 		# print(feature_vectors[i])
@@ -60,7 +60,7 @@ def main():
 	'#42b765','#1c98a8','#32e0ff','#a5568f']
 
 	latent=TSNE(n_components=2).fit_transform(feature_vectors)
-	print(latent.shape)
+	# print(latent.shape)
 	
 	f = open("latent.txt", "w")
 	pickle.dump(latent,f)
@@ -74,14 +74,15 @@ def main():
 	pickle.dump(topics,f)
 	f.close()
 
-	for i in range(20):
-		ix=np.where(topics==i)
-		plt.scatter(latent[ix,0],latent[ix,1],c=color[i])
+	print('Finished applying TSNE')
+	# for i in range(20):
+	# 	ix=np.where(topics==i)
+	# 	plt.scatter(latent[ix,0],latent[ix,1],c=color[i])
 	
-	plt.title("LDA on 20 Newsgroups dataset")
-	plt.xlabel("Latent Semantics x[0]")
-	plt.ylabel("Latent Semantics x[1]")
-	plt.show()
+	# plt.title("LDA on 20 Newsgroups dataset")
+	# plt.xlabel("Latent Semantics x[0]")
+	# plt.ylabel("Latent Semantics x[1]")
+	# plt.show()
 	
 
 
