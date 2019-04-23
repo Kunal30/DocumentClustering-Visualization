@@ -5,7 +5,7 @@
 
 # 1) ----> Data preprocessing(Tokenization, Stemming, Stopword Removal, Lematization) 
 # 2) ----> Latent Dirichlet Allocation 
-# 3) ----> TSNE 
+# 3) ----> PCA 
 # 4) ----> 2D Visualization 
 # 5) ----> 3D Visualization
 
@@ -59,7 +59,7 @@ def main():
 	'#f27900','#0be09c','#ba9e9e','#a31f01',
 	'#42b765','#1c98a8','#32e0ff','#a5568f']
 
-	latent=TSNE(n_components=2).fit_transform(feature_vectors)
+	latent=PCA(n_components=2).fit_transform(feature_vectors)
 	# print(latent.shape)
 	
 	f = open("latent.txt", "w")
@@ -74,7 +74,7 @@ def main():
 	pickle.dump(topics,f)
 	f.close()
 
-	print('Finished applying TSNE')
+	print('Finished applying PCA')
 	# for i in range(20):
 	# 	ix=np.where(topics==i)
 	# 	plt.scatter(latent[ix,0],latent[ix,1],c=color[i])

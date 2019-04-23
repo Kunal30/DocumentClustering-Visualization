@@ -21,7 +21,8 @@ import nltk
 import pandas as pd
 from sklearn.manifold import TSNE
 import time
-from tsne import tsne
+# from tsne import tsne
+import pickle
 from preprocess_reuters_dataset import get_medium_dataset
 from gensim.models import LdaMulticore
 # '''
@@ -31,6 +32,17 @@ def main():
 	lda_model=LdaMulticore.load('lda.model')
 	print('Successfully Loaded')
 	print(lda_model)
+
+	f = open('cnn_text.pickle', 'r')
+	test_data1 = pickle.load(f)
+	
+	f = open('test_dataset.txt', 'r')
+	test_data2 = pickle.load(f)
+	
+	
+
+	
+
 
 
 if __name__ == "__main__":
