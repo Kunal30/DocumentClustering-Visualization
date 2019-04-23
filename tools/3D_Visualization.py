@@ -32,7 +32,9 @@ for i in range(topics.shape[0]):
     tsne_z[i]=Z[int(topics[i])]
     color_docx.append(color[int(topics[i])] )
 
-
+word_labels=[]
+for i in range(topics.shape[0]):
+	word_labels.append('HelloWorld')
 # Just need to replace x, y, z with tsne_x, tsne_y, tsne_z
 
 
@@ -43,6 +45,7 @@ trace1 = go.Scatter3d(
     x=tsne_x,
     y=tsne_y,
     z=tsne_z,
+    text=word_labels,
     mode='markers',
     marker=dict(
         size=12,
