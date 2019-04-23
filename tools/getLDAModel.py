@@ -152,10 +152,10 @@ def main():
 	'''
 	dictionary = gensim.corpora.Dictionary(processed_docs)
 
-	f = open("dictionary.txt", "w")
+	f = open("dictionary.pickle", "w")
 	pickle.dump(dictionary,f)
 	f.close()
-	print('dictionary.txt created!!')
+	print('dictionary.pickle created!!')
 
 	'''
 	Create the Bag-of-words model for each document i.e for each document we create a dictionary reporting how many
