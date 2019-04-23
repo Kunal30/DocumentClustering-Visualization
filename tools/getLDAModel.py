@@ -152,7 +152,11 @@ def main():
 	'''
 	dictionary = gensim.corpora.Dictionary(processed_docs)
 
-	
+	f = open("dictionary.txt", "w")
+	pickle.dump(dictionary,f)
+	f.close()
+	print('dictionary.txt created!!')
+
 	'''
 	Create the Bag-of-words model for each document i.e for each document we create a dictionary reporting how many
 	words and how many times those words appear. Save this to 'bow_corpus'

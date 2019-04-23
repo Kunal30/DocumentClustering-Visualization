@@ -154,7 +154,7 @@ def main():
 	in the training set using gensim.corpora.Dictionary and call it 'dictionary'
 	'''
 	dictionary = gensim.corpora.Dictionary(processed_docs)
-
+	
 	# '''
 	# Checking dictionary created
 	# '''
