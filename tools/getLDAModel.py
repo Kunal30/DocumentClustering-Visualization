@@ -153,7 +153,7 @@ def main():
 	dictionary = gensim.corpora.Dictionary(processed_docs)
 
 	f = open("dictionary.pickle", "w")
-	pickle.dump(dictionary,f)
+	pickle.dump(dictionary,f,protocol=pickle.HIGHEST_PROTOCOL)
 	f.close()
 	print('dictionary.pickle created!!')
 
