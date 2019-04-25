@@ -39,7 +39,7 @@ from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 def main():
-	feature_vectors=np.load("input2tsne.npy")
+	feature_vectors=np.load("CNN_2_topics.npy")
 	topics=np.zeros((feature_vectors.shape[0],1))
 
 	# print(feature_vectors.shape)

@@ -1,0 +1,42 @@
+(lp0
+V0.010*"human" + 0.006*"moral" + 0.006*"object" + 0.005*"write" + 0.005*"post" + 0.004*"subject" + 0.004*"scienc" + 0.004*"like" + 0.004*"medic" + 0.004*"peopl"
+p1
+aV0.015*"like" + 0.008*"time" + 0.007*"look" + 0.006*"face" + 0.005*"know" + 0.005*"want" + 0.005*"write" + 0.005*"go" + 0.005*"peopl" + 0.005*"good"
+p2
+aV0.013*"encrypt" + 0.012*"chip" + 0.009*"secur" + 0.009*"line" + 0.009*"organ" + 0.009*"subject" + 0.009*"clipper" + 0.008*"write" + 0.007*"govern" + 0.006*"public"
+p3
+aV0.056*"say" + 0.034*"share" + 0.030*"compani" + 0.018*"stock" + 0.017*"corp" + 0.014*"offer" + 0.014*"billion" + 0.011*"group" + 0.011*"april" + 0.010*"sale"
+p4
+aV0.013*"subject" + 0.012*"line" + 0.011*"organ" + 0.011*"write" + 0.011*"articl" + 0.010*"wire" + 0.008*"state" + 0.007*"ohio" + 0.007*"crime" + 0.006*"post"
+p5
+aV0.011*"christian" + 0.010*"write" + 0.010*"peopl" + 0.009*"believ" + 0.009*"subject" + 0.008*"line" + 0.007*"organ" + 0.007*"jesus" + 0.007*"know" + 0.007*"think"
+p6
+aV0.021*"learn" + 0.020*"data" + 0.017*"machin" + 0.009*"network" + 0.008*"model" + 0.007*"algorithm" + 0.006*"comput" + 0.005*"cours" + 0.005*"user" + 0.005*"scienc"
+p7
+aV0.023*"file" + 0.012*"imag" + 0.011*"program" + 0.008*"avail" + 0.008*"output" + 0.007*"entri" + 0.007*"includ" + 0.006*"list" + 0.006*"function" + 0.006*"sourc"
+p8
+aV0.017*"space" + 0.011*"nasa" + 0.007*"power" + 0.006*"orbit" + 0.006*"launch" + 0.006*"engin" + 0.005*"technolog" + 0.005*"design" + 0.005*"develop" + 0.004*"time"
+p9
+aV0.015*"israel" + 0.013*"isra" + 0.012*"sharehold" + 0.010*"jew" + 0.009*"arab" + 0.009*"subject" + 0.008*"right" + 0.008*"write" + 0.007*"organ" + 0.007*"line"
+p10
+aV0.016*"think" + 0.016*"peopl" + 0.013*"know" + 0.012*"like" + 0.011*"time" + 0.010*"go" + 0.010*"thing" + 0.009*"want" + 0.009*"come" + 0.008*"work"
+p11
+aV0.020*"line" + 0.018*"window" + 0.017*"subject" + 0.016*"organ" + 0.010*"post" + 0.009*"card" + 0.008*"write" + 0.008*"host" + 0.008*"problem" + 0.007*"nntp"
+p12
+aV0.011*"armenian" + 0.009*"line" + 0.008*"write" + 0.008*"subject" + 0.008*"organ" + 0.007*"articl" + 0.006*"turkish" + 0.005*"post" + 0.005*"bike" + 0.005*"peopl"
+p13
+aV0.035*"say" + 0.011*"wheat" + 0.009*"soviet" + 0.008*"gold" + 0.008*"union" + 0.008*"coffe" + 0.008*"ship" + 0.007*"report" + 0.007*"grain" + 0.006*"state"
+p14
+aV0.035*"corn" + 0.014*"channel" + 0.012*"dixon" + 0.009*"kernel" + 0.009*"audio" + 0.009*"input" + 0.008*"usda" + 0.008*"nrhj" + 0.008*"featur" + 0.007*"program"
+p15
+aV0.045*"say" + 0.016*"year" + 0.012*"bank" + 0.011*"trade" + 0.011*"market" + 0.011*"price" + 0.010*"billion" + 0.009*"rise" + 0.007*"product" + 0.006*"export"
+p16
+aV0.127*"loss" + 0.074*"profit" + 0.058*"year" + 0.055*"oper" + 0.044*"rev" + 0.031*"sale" + 0.030*"note" + 0.023*"includ" + 0.021*"gain" + 0.016*"share"
+p17
+aV0.018*"presid" + 0.010*"senat" + 0.009*"stephanopoulo" + 0.009*"clinton" + 0.008*"state" + 0.007*"hous" + 0.007*"insur" + 0.007*"vote" + 0.007*"congress" + 0.006*"go"
+p18
+aV0.023*"line" + 0.022*"subject" + 0.021*"organ" + 0.019*"drive" + 0.014*"post" + 0.013*"univers" + 0.011*"host" + 0.011*"nntp" + 0.011*"write" + 0.009*"articl"
+p19
+aV0.013*"line" + 0.012*"game" + 0.012*"subject" + 0.012*"organ" + 0.010*"team" + 0.009*"write" + 0.008*"year" + 0.008*"post" + 0.008*"articl" + 0.008*"play"
+p20
+a.

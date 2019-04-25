@@ -20,6 +20,11 @@ Z = pickle.load(f)
 f = open('topics.txt', 'r')
 topics = pickle.load(f)
 
+f = open('topics.pickle', 'r')
+topics_dist = pickle.load(f)
+
+# print(topics_dist)
+
 tsne_x=latent[:,0]
 tsne_y=latent[:,1]
 
@@ -34,7 +39,7 @@ for i in range(topics.shape[0]):
 
 word_labels=[]
 for i in range(topics.shape[0]):
-	word_labels.append('HelloWorld')
+	word_labels.append(topics_dist[int(topics[i])])
 # Just need to replace x, y, z with tsne_x, tsne_y, tsne_z
 
 

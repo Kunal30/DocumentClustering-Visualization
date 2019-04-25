@@ -128,9 +128,9 @@ def main():
 	for doc in medium_test:
 		total_test.append(doc)
 
-	f = open("test_dataset.txt", "w")
-	pickle.dump(total_train,f)
-	pickle.dump(total_test,f)
+	f = open("test_dataset.pickle", "w")
+	pickle.dump(total_train,f,protocol=pickle.HIGHEST_PROTOCOL)
+	pickle.dump(total_test,f,protocol=pickle.HIGHEST_PROTOCOL)
 	f.close()
 	
 	print('data has been written')
@@ -168,21 +168,29 @@ def main():
 	Train your lda model using gensim.models.LdaMulticore and save it to 'lda_model'
 	'''
 	# TODO
-	lda_model =  gensim.models.LdaMulticore(bow_corpus, 
-	                                   num_topics = 20, 
-	                                   id2word = dictionary,                                    
-	                                   passes = 10,
-	                                   workers = 2)
+	# lda_model =  gensim.models.LdaMulticore(bow_corpus, 
+	#                                    num_topics = 20, 
+	#                                    id2word = dictionary,                                    
+	#                                    passes = 10,
+	#                                    workers = 2)
 
+	lda_model=gensim.models.LdaMulticore.load('lda.model')
 
 	# '''
 	# For each topic, we will explore the words occuring in that topic and its relative weight
 	# '''
-	# for idx, topic in lda_model.print_topics(-1):
-	#     print("Topic: {} \nWords: {}".format(idx, topic ))
-	#     print("\n")
+	topics=[]
 
-	    
+	for idx, topic in lda_model.print_topics(-1):
+	    print("Topic: {} \nWords: {}".format(idx, topic ))
+	    topics.append(topic)
+	    print("\n")
+
+	f = open("topics.pickle", "w")
+	pickle.dump(topics,f)
+	f.close()    
+	print('Topics saved!!')    
+	print(topics)
 
 	# # Data preprocessing step for the unseen document
 	# for doc in total_train:
